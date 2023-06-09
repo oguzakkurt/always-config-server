@@ -1,0 +1,30 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost}:8761/eureka
+    register-with-eureka: false
+  instance:
+    hostname: localhost
+server:
+  port: 8222
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: agency
+          uri: ${NAME_AGENCY:http://localhost:8010}
+          predicates:
+            - Path=/api/v1/agency/**  
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVER_URL:http://localhost}:9411/api/v2/spans
