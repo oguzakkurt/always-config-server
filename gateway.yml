@@ -19,7 +19,9 @@ spring:
         - id: agency
           uri: lb://AGENCY
           predicates:
-            - Path=/api/v1/agency/**  
+            - Path=/api/v1/agency/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}
 
 management:
   tracing:
