@@ -19,3 +19,11 @@ spring:
   data:
     mongodb:
       uri: mongodb://${MONGODB_USER:root}:${MONGODB_PASS:123456}@${MONGODB_HOST:localhost}:27017/auth?authMechanism=SCRAM-SHA-256&authSource=admin
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  zipkin:
+    tracing:
+      endpoint: ${ZIPKIN_SERVER_URL:http://localhost}:9411/api/v2/spans
