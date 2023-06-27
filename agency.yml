@@ -15,12 +15,7 @@ spring:
     name: agency
   data:
     mongodb:
-      username: ${MONGODB_USER:root}
-      password: ${MONGODB_PASS:"123456"}
-      host: ${MONGODB_HOST:localhost}
-      port: 27017
-      database: agency
-      authentication-database: admin
+      uri: mongodb://${MONGODB_USER:root}:${MONGODB_PASS:"123456"}@${MONGODB_HOST:localhost}:27017/agency?authMechanism=SCRAM-SHA-256&authSource=admin
 
 management:
   tracing:
