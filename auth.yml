@@ -15,4 +15,4 @@ spring:
     name: auth
   data:
     mongodb:
-      uri: mongodb://${MONGODB_USER:root}:${MONGODB_PASS:"123456"}@${MONGODB_HOST:localhost}:27017/agency?authMechanism=SCRAM-SHA-256&authSource=admin
+      uri: mongodb://${MONGODB_USER:root}:${MONGODB_PASS:"123456"}@${MONGODB_HOST:localhost}:27017/users?authMechanism=SCRAM-SHA-256&authSource=admin
