@@ -7,12 +7,15 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost}:8761/eureka
-      
-server:
-  port: 7011
 spring:
   application:
     name: auth
+    
+server:
+  port: 7011
+  
+---
+spring:
   data:
     mongodb:
       uri: mongodb://${MONGODB_USER:root}:${MONGODB_PASS:"123456"}@${MONGODB_HOST:localhost}:27017/auth?authMechanism=SCRAM-SHA-256&authSource=admin
