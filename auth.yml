@@ -18,4 +18,4 @@ server:
 spring:
   data:
     mongodb:
-      uri: mongodb://oguz:123456@localhost:27019/jwt?authMechanism=SCRAM-SHA-256&authSource=admin
+      uri: mongodb://${MONGODB_USER:oguz}:${MONGODB_PASS:123456}@${MONGODB_HOST:localhost}:27017/agency?authMechanism=SCRAM-SHA-256&authSource=admin
