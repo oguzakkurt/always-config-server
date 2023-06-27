@@ -11,16 +11,6 @@ server:
 spring:
   application:
     name: gateway
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: false
-      routes:
-        - id: agency
-          uri: lb://AGENCY
-          predicates:
-            - Path=/api/v1/agency/**
 
 management:
   tracing:
