@@ -1,0 +1,23 @@
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost}:8761/eureka
+      
+server:
+  port: 7011
+spring:
+  application:
+    name: auth
+  data:
+    mongodb:
+      username: ${MONGODB_USER:root}
+      password: ${MONGODB_PASS:"123456"}
+      host: ${MONGODB_HOST:localhost}
+      port: 27017
+      database: agency
+      authentication-database: admin
