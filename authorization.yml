@@ -12,7 +12,7 @@ spring:
     name: authorization
     
 server:
-  port: 7011
+  port: 9000
   
 ---
 spring:
