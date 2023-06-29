@@ -1,0 +1,21 @@
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: ${EUREKA_SERVER_ADDRESS:http://localhost}:8761/eureka
+spring:
+  application:
+    name: authorization
+    
+server:
+  port: 7011
+  
+---
+spring:
+  data:
+    mongodb:
+      uri: mongodb://${MONGODB_USER:root}:${MONGODB_PASS:123456}@${MONGODB_HOST:localhost}:27017/auth?authMechanism=SCRAM-SHA-256&authSource=admin
