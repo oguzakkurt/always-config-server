@@ -38,7 +38,7 @@ session:
         - TokenRelay=
         - SaveSession
       routes:
-        - id: route
+        - id: agency
           uri: http://localhost:8010/
           predicates:
             - Path=/**
