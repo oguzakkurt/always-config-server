@@ -11,6 +11,61 @@ server:
 spring:
   application:
     name: gateway
+  security:
+    oauth2:
+      client:
+        registration:
+          gateway:
+            provider: spring
+            clientId: client
+            client-secret: secret
+            scope: openid, profile, user.read
+            authorization-grant-type: authorization_code
+            redirect-uri: http://127.0.0.1:8080/login/oauth2/code/spring
+        provider:
+          spring:
+            issuer-uri: http://localhost:9000  
+
+session:
+    store-type: redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  cloud:
+    gateway:
+      default-filters:
+        - TokenRelay=
+        - SaveSession
+      routes:
+        - id: route
+          uri: http://localhost:8010/
+          predicates:
+            - Path=/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: resourceServer
+                fallbackUri: forward:/fallback                            
+            - name: Retry
+              args:
+                retries: 30
+                methods: GET
+                backoff:
+                  firstBackoff: 10ms
+                  maxBackoff: 500ms
+resilience4j:
+  circuitbreaker:
+    instances:
+      resourceServer:
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+  timelimiter:
+    configs:
+     resourceServer:
+         timeoutDuration: 20s
 
 management:
   tracing:
