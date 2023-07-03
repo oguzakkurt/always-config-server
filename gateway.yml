@@ -11,20 +11,6 @@ server:
 spring:
   application:
     name: gateway
-  security:
-    oauth2:
-      client:
-        registration:
-          gateway:
-            provider: spring
-            clientId: client
-            client-secret: secret
-            scope: openid, profile, user.read
-            authorization-grant-type: authorization_code
-            redirect-uri: http://127.0.0.1:8080/login/oauth2/code/spring
-        provider:
-          spring:
-            issuer-uri: http://localhost:9000  
 
 session:
     store-type: redis
