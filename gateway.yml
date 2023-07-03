@@ -45,7 +45,7 @@ session:
           filters:
             - name: CircuitBreaker
               args:
-                name: resourceServer
+                name: agency
                 fallbackUri: forward:/fallback                            
             - name: Retry
               args:
